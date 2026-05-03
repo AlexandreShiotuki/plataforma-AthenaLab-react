@@ -11,7 +11,7 @@ export const OBR_Course = {
             title: "Aula 01 - Apresentação da Modalidade",
             videoUrl: "https://www.youtube.com/watch?v=e1N528S5x68&list=PL_bp00zF4EU-Ja2etr8gco4hpySzhCScI&index=1",
             desc: "Entenda as regras fundamentais da OBR Prática: como funciona a pontuação por zonas, o tempo de calibração na arena, penalidades e o objetivo final de resgate.",
-            duration: "12m"
+            duration: "11m"
         },
         {
             id: 2,
