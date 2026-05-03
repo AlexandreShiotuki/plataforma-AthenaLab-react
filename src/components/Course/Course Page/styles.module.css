@@ -1,0 +1,95 @@
+.pageContainer {
+    padding: 20px;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    color: white;
+    box-sizing: border-box;
+}
+
+/* Layout Principal: Área centralizada */
+.contentArea {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    width: 100%;
+}
+
+/* Responsividade para celular: vira uma coluna só */
+@media (max-width: 768px) {
+    .contentArea {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Player --- */
+.playerSection h1 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #f8fafc;
+}
+
+.videoWrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    background-color: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.description {
+    margin-top: 20px;
+    color: #cbd5e1;
+    line-height: 1.6;
+}
+
+/* --- Playlist (Barra Lateral) --- */
+.playlistSection h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 10px;
+}
+
+.lessonList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 500px; /* Se tiver muitas aulas, cria rolagem */
+    overflow-y: auto;
+}
+
+.lessonItem {
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: #cbd5e1;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+
+.lessonItem:hover {
+    background: #334155;
+    color: white;
+}
+
+/* Estilo para a aula que está selecionada */
+.lessonItem.active {
+    background: #6366f1; /* Roxo destaque */
+    border-color: #6366f1;
+    color: white;
+    font-weight: bold;
+}
+
+.playIcon {
+    font-size: 0.7rem;
+    opacity: 0.7;
+}

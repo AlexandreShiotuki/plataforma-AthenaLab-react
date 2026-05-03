@@ -1,0 +1,77 @@
+/* Container principal do carrossel */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px; /* Limite de largura para não esticar demais */
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/* A trilha onde ficam os cards */
+.carousel-track {
+  display: flex;
+  gap: 20px; /* Espaço entre os cards */
+  overflow-x: auto; /* Permite rolagem horizontal */
+  scroll-snap-type: x mandatory; /* Faz o efeito de "imã" nos cards */
+  scroll-behavior: smooth; /* Rolagem suave via JS */
+  padding-bottom: 20px;
+  
+  /* Esconde a barra de rolagem (opcional, mas fica mais bonito) */
+  scrollbar-width: none; /* Firefox */
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none; /* Chrome, Safari e Opera */
+}
+
+/* O Card Individual */
+.course-card {
+  flex: 0 0 auto; /* Impede o card de encolher ou esticar */
+  width: 300px; /* Largura fixa do card */
+  scroll-snap-align: start; /* Alinha o card à esquerda ao parar de rolar */
+  
+  /* Estilos visuais do card (exemplo) */
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.course-card:hover {
+  transform: translateY(-5px); /* Efeito ao passar o mouse */
+}
+
+.card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 15px;
+}
+
+/* Botões de Navegação */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.nav-btn.prev { left: -20px; }
+.nav-btn.next { right: -20px; }
+
+.nav-btn:hover { background-color: #f0f0f0; }

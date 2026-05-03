@@ -1,0 +1,94 @@
+/* O Card inteiro */
+.card {
+    background-color: #151c2c; /* Cor de fundo do card (baseado no print) */
+    border-radius: 12px;
+    border: 1px solid #1e293b;
+    overflow: hidden; /* Faz a imagem não vazar das bordas arredondadas */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Efeito ao passar o mouse por cima do card */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* --- ÁREA DA IMAGEM --- */
+.imageContainer {
+    position: relative; /* Segura a tag absoluta dentro dessa caixa */
+    width: 100%;
+    height: 180px; /* Altura do retângulo da imagem (pode aumentar se quiser) */
+    /* Removi o padding! Agora a imagem cola nas bordas do card */
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz a imagem preencher todo o retângulo sem esmagar */
+    display: block; /* Remove um espaço fantasma que o HTML coloca embaixo de imagens */
+}
+
+.categoryBadge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    
+    /* Cores mais fortes para destacar bem em cima da foto */
+    background-color: rgba(15, 23, 42, 0.85); /* Fundo bem escuro e um pouco transparente */
+    color: #c4b5fd; /* Texto roxo claro */
+    border: 1px solid #6d28d9; /* Borda roxa forte */
+    
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase; /* Deixa a tag toda em maiúscula pra dar mais destaque */
+    letter-spacing: 0.5px;
+    z-index: 10; /* Garante que a tag fique por cima de qualquer imagem */
+    backdrop-filter: blur(4px); /* Dá um efeitinho de vidro embaçado atrás da tag */
+}
+
+.contentContainer {
+    padding: 1rem;
+    flex-direction: column;
+    color: #ffffff;
+}
+
+.contentContainer > h2, p {
+    margin-top: 0.5rem;
+}
+
+.buttonGroup {
+    width: 100%;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+.downloadButton {
+    text-align: center;
+    padding: 0.4rem 0.8rem;
+    width: 50%;
+    border: 1px solid #9d91eb;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.view3dButton {
+    color: #ffffff;
+    background-color: #4a7af6;
+    width: 50%;
+    border-radius: 0.5rem;
+
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.downloadButton:hover, .view3dButton:hover {
+    transition: 0.3s;
+    opacity: 0.7;
+}

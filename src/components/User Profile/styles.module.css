@@ -1,0 +1,66 @@
+.profileContainer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.05); /* Fundo sutil */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.profileContainer:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+.levelRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.levelBadge {
+    font-size: 0.75rem;
+    color: #10b981; /* Verde tech */
+    font-weight: bold;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Estilo da Barra de XP */
+.xpTrack {
+    width: 60px;
+    height: 4px;
+    background: #334155;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.xpFill {
+    height: 100%;
+    background: #10b981; /* Mesma cor do nível */
+    border-radius: 2px;
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.6); /* Efeito neon */
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #10b981;
+}
