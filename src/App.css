@@ -7,4 +7,5 @@
 body {
   background-color: #0F172A;
   font-family: "Inter", sans-serif;
+  overflow-x: hidden;
 }

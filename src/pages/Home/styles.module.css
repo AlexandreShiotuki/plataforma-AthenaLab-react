@@ -12,6 +12,12 @@
   color: #ffffff;
 }
 
+@media (max-width: 768px) {
+  .homePage {
+    padding: 1rem 0.5rem 2rem;
+  }
+}
+
 .roboticCourses {
   color: #ffffff;
   margin: 3rem;

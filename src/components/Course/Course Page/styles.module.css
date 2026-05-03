@@ -20,6 +20,10 @@
     .contentArea {
         grid-template-columns: 1fr;
     }
+
+    .pageContainer {
+        padding: 10px;
+    }
 }
 
 /* --- Player --- */

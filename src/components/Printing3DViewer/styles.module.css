@@ -4,3 +4,9 @@
   min-height: 420px;
   display: block;
 }
+
+@media (max-width: 768px) {
+  .viewer {
+    min-height: 300px;
+  }
+}

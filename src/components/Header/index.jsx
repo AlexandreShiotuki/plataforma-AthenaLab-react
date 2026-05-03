@@ -32,7 +32,7 @@ export default function Header() {
 
                 <nav className={styles.anchor}>
                     <Link to="/" className={styles.anchors}>Home</Link>
-                    <a href="" className={styles.anchors}>Cursos</a>
+                    <a href="#!" className={styles.anchors} onClick={(e) => e.preventDefault()}>Cursos</a>
                     <Link to="/exercicios" className={styles.anchors}>Exercícios</Link>
                     <Link to="/impressoes" className={styles.anchors}>Impressões 3D</Link>
                 </nav>
@@ -46,7 +46,7 @@ export default function Header() {
                         <img src={logo} alt="Logo Athena" className={styles.mobileLogo} />
                     </div>
                     <Link to="/" className={styles.mobileAnchor} onClick={toggleMenu}>Home</Link>
-                    <a href="" className={styles.mobileAnchor} onClick={toggleMenu}>Cursos</a>
+                    <a href="#!" className={styles.mobileAnchor} onClick={(e) => { e.preventDefault(); toggleMenu(); }}>Cursos</a>
                     <Link to="/exercicios" className={styles.mobileAnchor} onClick={toggleMenu}>Exercícios</Link>
                     <Link to="/impressoes" className={styles.mobileAnchor} onClick={toggleMenu}>Impressões 3D</Link>
                 </div>

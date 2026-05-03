@@ -67,7 +67,6 @@ export default function Printing3DViewer({ src }) {
 
     window.addEventListener('resize', onWindowResize);
 
-    const clock = new THREE.Clock();
     const animate = () => {
       requestAnimationFrame(animate);
       controls.update();
