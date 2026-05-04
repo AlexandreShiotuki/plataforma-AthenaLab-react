@@ -120,6 +120,8 @@
 .actionButtons {
     display: flex;
     gap: 15px;
+    justify-content: center; 
+    margin-top: 20px;
 }
 
 .retryButton {

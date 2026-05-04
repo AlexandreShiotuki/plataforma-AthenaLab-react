@@ -19,15 +19,18 @@ export default function CoursePage() {
     const [showCompletionModal, setShowCompletionModal] = useState(false);
 
     useEffect(() => {
-        if (curso && curso.lessons && curso.lessons.length > 0) {
-            const lessonFromParams = lessonId ? curso.lessons.find(l => l.id === lessonId) : undefined;
-            const newLesson = lessonFromParams || curso.lessons[0];
+    if (curso && curso.lessons && curso.lessons.length > 0) {
+        const lessonFromParams = lessonId ? curso.lessons.find(l => l.id === lessonId) : undefined;
+        const newLesson = lessonFromParams || curso.lessons[0];
+        
+        // Só atualiza se a aula atual for nula ou se o ID dela for diferente da nova
+        if (!aulaAtual || aulaAtual.id !== newLesson.id) {
             setAulaAtual(newLesson);
-            setMode('video'); // Sempre que mudar de curso/aula, reseta pro vídeo
-            // Marca a aula como assistida quando o usuário a abre
+            setMode('video'); 
             markLessonAsWatched(courseId, newLesson.id);
         }
-    }, [curso, lessonId, courseId, markLessonAsWatched]);
+    }
+}, [curso, lessonId, courseId, markLessonAsWatched, aulaAtual]);
 
     const getYouTubeId = (url) => {
         if (!url) return null;
