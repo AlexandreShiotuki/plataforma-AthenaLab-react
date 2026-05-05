@@ -4,12 +4,12 @@ import { useGamification } from '../context/GamificationContext';
 
 // Remova as props que ele recebia antes, agora ele pega direto do contexto
 export default function UserProfile() { 
-    const { user } = useGamification(); // <--- Pega os dados reais
+    const { user } = useGamification();
 
     return (
         <div className={styles.profileContainer}>
             <div className={styles.info}>
-                <span className={styles.name}>{user.name}</span>
+                <span className={styles.name}>{user.name || 'Aluno Athena'}</span>
                 
                 <div className={styles.levelRow}>
                     <span className={styles.levelBadge}>Lvl. {user.level}</span>
@@ -17,15 +17,14 @@ export default function UserProfile() {
                     <div className={styles.xpTrack}>
                         <div 
                             className={styles.xpFill} 
-                            // O XP vai de 0 a 100, então cabe perfeito na porcentagem
-                            style={{ width: `${user.xp}%` }} 
+                            style={{ width: `${Math.min(Math.max(user.xp, 0), 100)}%` }} 
                         ></div>
                     </div>
                 </div>
             </div>
             
             <img 
-                src={defaultAvatar} 
+                src={user.avatarUrl || defaultAvatar} 
                 alt="Perfil" 
                 className={styles.avatar} 
             />

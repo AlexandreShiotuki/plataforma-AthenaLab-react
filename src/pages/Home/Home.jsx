@@ -3,7 +3,6 @@ import { courses } from '../../data/courses'
 import styles from './styles.module.css'
 
 export default function Home() {
-  // Montagem de seções: percorre os cursos e transforma em aulas
   const getCourseLessons = (courseId) => {
     const course = courses.find(c => c.id === courseId)
     if (!course || !course.lessons) return []
