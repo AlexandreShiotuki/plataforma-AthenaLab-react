@@ -6,6 +6,14 @@ import { useGamification } from '../context/GamificationContext';
 export default function UserProfile() { 
     const { user } = useGamification();
 
+    // Calcula o XP necessário para passar do nível atual para o próximo
+    const getXpRequiredForLevel = (level) => {
+        return Math.ceil(100 * Math.pow(1.5, level - 1));
+    };
+
+    const xpRequired = getXpRequiredForLevel(user.level);
+    const progressPercentage = Math.min((user.xp / xpRequired) * 100, 100);
+
     return (
         <div className={styles.profileContainer}>
             <div className={styles.info}>
@@ -17,7 +25,7 @@ export default function UserProfile() {
                     <div className={styles.xpTrack}>
                         <div 
                             className={styles.xpFill} 
-                            style={{ width: `${Math.min(Math.max(user.xp, 0), 100)}%` }} 
+                            style={{ width: `${progressPercentage}%` }} 
                         ></div>
                     </div>
                 </div>
