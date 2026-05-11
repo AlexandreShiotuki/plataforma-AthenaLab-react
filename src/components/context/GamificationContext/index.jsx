@@ -175,7 +175,23 @@ export function GamificationProvider({ children }) {
         }
     };
 
-    const getCourseProgress = (courseId, totalLessons) => { /* ... sua lógica antiga ... */ };
+    const getCourseProgress = (courseId, totalLessons) => {
+        if (!totalLessons || totalLessons === 0) return 0;
+        
+        // Garante que temos um array válido para pesquisar
+        const watchedList = Array.isArray(user?.watchedLessons) ? user.watchedLessons : [];
+
+        // Filtra apenas as aulas que começam com o ID deste curso específico
+        const watchedInCourse = watchedList.filter(lessonKey => 
+            lessonKey.startsWith(`${courseId}_`)
+        ).length;
+
+        // Calcula a porcentagem
+        const progress = (watchedInCourse / totalLessons) * 100;
+        
+        // Arredonda o valor e garante que não passe de 100%
+        return Math.min(Math.round(progress), 100); 
+    };
 
     const markLessonAsWatched = async (courseId, lessonId) => {
         if (!userId || !profileLoaded) return;

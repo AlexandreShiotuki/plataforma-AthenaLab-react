@@ -1,38 +1,53 @@
-.courseSection {
-  color: #ffffff;
-  margin: 2rem 1rem;
-  padding: 1.4rem 1.2rem 1.2rem;
-  border-radius: 24px;
-  background: rgba(15, 23, 42, 0.85);
-  border: 1px solid rgba(148, 163, 184, 0.12);
-  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.2);
+.section {
+  background-color: #0f172a; /* Fundo branco para destacar do fundo da home */
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 40px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03); 
 }
 
-.courseSection h2 {
-  margin: 0 0 1.25rem;
-  font-size: 1.65rem;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  line-height: 1.2;
-  max-width: 100%;
-}
-
-.carouselContainer {
+.header {
   display: flex;
-  gap: 22px;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.grid {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
   overflow-x: auto;
-  padding: 0 0 16px;
-  scroll-snap-type: x proximity;
-  scroll-padding-left: 1rem;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+  /* Esconde a scrollbar no Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
 }
 
-.carouselContainer::-webkit-scrollbar {
-  display: none;
+/* Estilização da barra de rolagem para Chrome/Edge */
+.grid::-webkit-scrollbar {
+  height: 6px;
 }
 
-.carouselContainer > * {
-  flex: 0 0 auto;
-  scroll-snap-align: start;
+.grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.grid::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 10px;
+}
+
+.grid > * {
+  flex: 0 0 auto; /* Impede que os cards esmaguem */
 }

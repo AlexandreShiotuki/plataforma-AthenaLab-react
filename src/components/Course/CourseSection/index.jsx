@@ -1,25 +1,32 @@
-import CourseCard from '../CardCourse/index'
-import styles from './styles.module.css'
+import CardCourse from '../CardCourse';
+import CourseProgression from '../../CourseProgression';
+import styles from './styles.module.css';
 
 export default function CourseSection({ title, lessons }) {
+  const courseId = lessons && lessons.length > 0 ? lessons[0].courseId : null;
+  const totalLessons = lessons ? lessons.length : 0;
+
+  if (!lessons || lessons.length === 0) return null;
+
   return (
-    <section className={styles.courseSection}>
-      <h2>{title}</h2>
-      <div className={styles.carouselContainer}>
+    <section className={styles.section}>
+      <div className={styles.header}>
+        <h2 className={styles.title}>{title}</h2>
+        
+        {courseId && (
+          <CourseProgression courseId={courseId} totalLessons={totalLessons} />
+        )}
+      </div>
+
+      <div className={styles.grid}>
         {lessons.map((lesson) => (
-          <CourseCard
-            key={`${lesson.courseId}-${lesson.id}`}
+          <CardCourse
+            key={lesson.id}
+            {...lesson}
             to={`/curso/${lesson.courseId}/${lesson.id}`}
-            id={lesson.courseId}
-            courseId={lesson.courseId}
-            lessonId={lesson.id}
-            title={`${lesson.courseTitle} — ${lesson.title}`}
-            desc={lesson.desc}
-            duration={lesson.duration}
-            thumbnail={lesson.thumbnail}
           />
         ))}
       </div>
     </section>
-  )
+  );
 }

@@ -1,11 +1,13 @@
-import CourseSection from '../../components/Course/CourseSection'
-import { courses } from '../../data/courses'
-import styles from './styles.module.css'
+import CourseSection from '../../components/Course/CourseSection';
+import { courses } from '../../data/courses';
+import styles from './styles.module.css';
 
 export default function Home() {
+  const idDoCursoPrincipal = 1;
+
   const getCourseLessons = (courseId) => {
-    const course = courses.find(c => c.id === courseId)
-    if (!course || !course.lessons) return []
+    const course = courses.find(c => c.id === courseId);
+    if (!course || !course.lessons) return [];
     
     return course.lessons.map((lesson) => ({
       ...lesson,
@@ -13,15 +15,21 @@ export default function Home() {
       courseTitle: course.title,
       thumbnail: lesson.thumbnail || course.thumbnail,
       duration: lesson.duration || course.duration || ''
-    }))
-  }
+    }));
+  };
 
   return (
     <div className={styles.homePage}>
+      {/* Curso 1 */}
       <CourseSection 
         title="Curso Preparatório para OBR" 
         lessons={getCourseLessons(1)} 
       />
+
+      <CourseSection 
+        title="Introdução à Robótica" 
+        lessons={getCourseLessons(2)} 
+      />
     </div>
-  )
+  );
 }
