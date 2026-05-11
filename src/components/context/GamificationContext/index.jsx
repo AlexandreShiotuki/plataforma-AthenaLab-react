@@ -11,7 +11,8 @@ export function GamificationProvider({ children }) {
         xp: 0,
         avatarUrl: '',
         completedActivities: [],
-        watchedLessons: []
+        watchedLessons: [],
+        lastNameChange: null
     });
     const [userId, setUserId] = useState(null);
     const [profileLoaded, setProfileLoaded] = useState(false);
@@ -19,27 +20,27 @@ export function GamificationProvider({ children }) {
     // Estado da Notificação
     const [notification, setNotification] = useState({ visible: false, xp: 0 });
 
-    useEffect(() => {
-        const loadProfile = async (id) => {
-            if (!id) {
-                setUser({
-                    name: '',
-                    level: 1,
-                    xp: 0,
-                    avatarUrl: '',
-                    completedActivities: [],
-                    watchedLessons: []
-                });
-                setProfileLoaded(true);
-                return;
-            }
+    const loadProfile = async (id) => {
+        if (!id) {
+            setUser({
+                name: '',
+                level: 1,
+                xp: 0,
+                avatarUrl: '',
+                completedActivities: [],
+                watchedLessons: [],
+                lastNameChange: null
+            });
+            setProfileLoaded(true);
+            return;
+        }
 
-            try {
-                const { data, error } = await supabase
-                    .from('usuarios')
-                    .select('nome, nivel, xp, avatar_url, completed_activities, watched_lessons')
-                    .eq('user_id', id)
-                    .maybeSingle();
+        try {
+            const { data, error } = await supabase
+                .from('usuarios')
+                .select('nome, nivel, xp, avatar_url, completed_activities, watched_lessons, ultima_alteracao_nome')
+                .eq('user_id', id)
+                .maybeSingle();
 
                 if (error) {
                     console.error('Erro ao carregar perfil:', error.message, error.code);
@@ -49,8 +50,6 @@ export function GamificationProvider({ children }) {
 
                 if (!data) {
                     console.warn('Perfil não encontrado para user_id:', id);
-                    console.log('Criando perfil padrão...');
-
                     const defaultProfile = {
                         user_id: id,
                         nome: 'Aluno Athena',
@@ -58,7 +57,8 @@ export function GamificationProvider({ children }) {
                         xp: 0,
                         avatar_url: '',
                         completed_activities: [],
-                        watched_lessons: []
+                        watched_lessons: [],
+                        ultima_alteracao_nome: null
                     };
 
                     const { error: insertError } = await supabase
@@ -67,8 +67,6 @@ export function GamificationProvider({ children }) {
 
                     if (insertError) {
                         console.error('Erro ao criar perfil padrão:', insertError.message);
-                    } else {
-                        console.log('Perfil padrão criado com sucesso');
                     }
 
                     setUser({
@@ -89,7 +87,8 @@ export function GamificationProvider({ children }) {
                     xp: data?.xp ?? 0,
                     avatarUrl: data?.avatar_url ?? '',
                     completedActivities: Array.isArray(data?.completed_activities) ? data.completed_activities : [],
-                    watchedLessons: Array.isArray(data?.watched_lessons) ? data.watched_lessons : []
+                    watchedLessons: Array.isArray(data?.watched_lessons) ? data.watched_lessons : [],
+                    lastNameChange: data?.ultima_alteracao_nome ?? null
                 });
                 setProfileLoaded(true);
             } catch (err) {
@@ -98,6 +97,7 @@ export function GamificationProvider({ children }) {
             }
         };
 
+    useEffect(() => {
         const initialize = async () => {
             setProfileLoaded(false);
             const {
@@ -110,18 +110,12 @@ export function GamificationProvider({ children }) {
         };
 
         initialize();
-
-        const {
-            data: { subscription }
-        } = supabase.auth.onAuthStateChange(async (_event, session) => {
-            setProfileLoaded(false);
-            const id = session?.user?.id ?? null;
-            setUserId(id);
-            await loadProfile(id);
-        });
-
-        return () => subscription.unsubscribe();
     }, []);
+
+    const refreshUserProfile = async () => {
+        if (!userId) return;
+        await loadProfile(userId);
+    };
 
     // Função auxiliar para mostrar o alerta
     const showToast = (amount) => {
@@ -225,7 +219,7 @@ export function GamificationProvider({ children }) {
     }
 
     return (
-        <GamificationContext.Provider value={{ user, addXp, getCourseProgress, markLessonAsWatched, isLessonWatched }}>
+        <GamificationContext.Provider value={{ user, userId, addXp, getCourseProgress, markLessonAsWatched, isLessonWatched, refreshUserProfile }}>
             {children}
             {/* 2. O Alerta fica aqui, flutuando sobre o site todo */}
             <XPNotification visible={notification.visible} xpAmount={notification.xp} />

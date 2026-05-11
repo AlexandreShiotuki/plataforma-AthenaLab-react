@@ -1,18 +1,65 @@
 .profileContainer {
-    display: flex;
+    position: relative;
+    display: inline-flex;
     align-items: center;
-    gap: 12px;
     padding: 6px 12px;
     background: rgba(255, 255, 255, 0.05); /* Fundo sutil */
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    cursor: pointer;
     transition: all 0.2s;
 }
 
 .profileContainer:hover {
     background: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.2);
+}
+
+.profileTrigger {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.profileTrigger:focus-visible {
+    outline: 2px solid rgba(16, 185, 129, 0.7);
+    outline-offset: 2px;
+}
+
+.dropdownMenu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    min-width: 180px;
+    background: rgba(15, 23, 42, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    padding: 8px 0;
+    z-index: 100;
+}
+
+.dropdownItem {
+    width: 100%;
+    padding: 12px 16px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+}
+
+.dropdownItem:hover,
+.dropdownItem:focus-visible {
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .info {
@@ -25,6 +72,28 @@
     font-weight: 600;
     font-size: 0.9rem;
     color: #fff;
+}
+
+.nameRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.editNameButton {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.editNameButton:hover {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.65);
 }
 
 .levelRow {
