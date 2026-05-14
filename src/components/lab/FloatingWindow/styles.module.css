@@ -1,0 +1,75 @@
+.windowWrapper {
+  position: fixed;
+  top: 15vh;
+  left: 5vw; /* Centraliza no celular (5vw de margem + 90vw de largura = 100%) */
+  width: 90vw;
+  max-width: 350px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.header {
+  background-color: #1e293b;
+  color: #ffffff;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: grab;
+  user-select: none;
+}
+
+.header:active {
+  cursor: grabbing;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.closeButton {
+  background: #334155;
+  border: none;
+  color: #ffffff;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.2s;
+  touch-action: manipulation;
+}
+
+.closeButton:hover {
+  background-color: #ef4444;
+}
+
+.content {
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+@media (max-width: 480px) {
+  .windowWrapper {
+    top: 10%;
+  }
+}
+
+/* Quando a tela for maior que um celular, centraliza matematicamente */
+@media (min-width: 400px) {
+  .windowWrapper {
+    left: calc(50vw - 175px); 
+  }
+}

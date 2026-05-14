@@ -24,6 +24,8 @@
 .logo {
     width: 6rem;
     height: 6rem;
+    object-fit: contain;
+    max-width: 100%;
 }
 
 .anchor {
@@ -41,12 +43,91 @@
     margin: 0 1.5rem;
     font-size: 1.3rem;
     transition: 0.3s;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
 }
 
 .anchors:hover {
     font-size: 1.4rem;
-    color: #6366f1; /* Sua cor de destaque (roxo) */
+    color: #6366f1;
 }
+
+/* --- Dropdown Logic --- */
+.dropdownContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.dropdownButton {
+    margin: 0 1.5rem;
+}
+
+.dropdownMenu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 0.5rem 0;
+    min-width: 180px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+}
+
+.dropdownItem {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    font-family: inherit;
+    cursor: pointer;
+    text-align: left;
+    transition: 0.2s;
+}
+
+.dropdownItem:hover {
+    background-color: #334155;
+    color: #6366f1;
+}
+
+/* --- Mobile Dropdown --- */
+.mobileDropdownMenu {
+    display: flex;
+    flex-direction: column;
+    background-color: #1e293b;
+    border-radius: 8px;
+    margin: 0.25rem 1rem;
+    overflow: hidden;
+}
+
+.mobileDropdownItem {
+    background: transparent;
+    border: none;
+    color: #cbd5e1;
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+    font-family: inherit;
+    cursor: pointer;
+    text-align: left;
+    border-left: 2px solid transparent;
+    transition: 0.2s;
+}
+
+.mobileDropdownItem:hover {
+    color: #6366f1;
+    border-left: 2px solid #6366f1;
+    background-color: #334155;
+}
+
+/* ... Restante do seu CSS original (Hamburger, MobileMenu, Media Queries) ... */
 
 .hamburger {
     display: none;
@@ -106,6 +187,8 @@
 .mobileLogo {
     width: 3.2rem;
     height: auto;
+    max-height: 3.2rem;
+    object-fit: contain;
 }
 
 .mobileAnchor {
@@ -114,6 +197,7 @@
     font-size: 1.2rem;
     padding: 0.7rem 0;
     transition: 0.3s;
+    font-family: inherit;
 }
 
 .mobileAnchor:hover {
@@ -134,55 +218,22 @@
     margin-left: 2rem;
 }
 
-/* Media Queries para Responsividade */
 @media (max-width: 1240px) {
-    .header {
-        padding: 1rem;
-    }
-
-    .logo {
-        display: none;
-    }
-
-    .anchor {
-        display: none;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
-    .mobileMenu {
-        display: flex;
-    }
+    .header { padding: 1rem; }
+    .logo { display: none; }
+    .anchor { display: none; }
+    .hamburger { display: flex; }
+    .mobileMenu { display: flex; }
 }
 
 @media (max-width: 768px) {
-    .header {
-        padding: 1rem 0.9rem;
-    }
-
-    .mobileLogo {
-        width: 3rem;
-    }
-
-    .mobileAnchor {
-        font-size: 1.1rem;
-        padding: 0.75rem 0;
-    }
+    .header { padding: 1rem 0.9rem; }
+    .mobileLogo { width: 3rem; }
+    .mobileAnchor { font-size: 1.1rem; padding: 0.75rem 0; }
 }
 
 @media (max-width: 480px) {
-    .header {
-        padding: 0.75rem 0.75rem;
-    }
-
-    .mobileMenu {
-        padding: 1rem 0.9rem 1.2rem;
-    }
-
-    .mobileAnchor {
-        font-size: 1rem;
-        padding: 0.65rem 0;
-    }
+    .header { padding: 0.75rem 0.75rem; }
+    .mobileMenu { padding: 1rem 0.9rem 1.2rem; }
+    .mobileAnchor { font-size: 1rem; padding: 0.65rem 0; }
 }

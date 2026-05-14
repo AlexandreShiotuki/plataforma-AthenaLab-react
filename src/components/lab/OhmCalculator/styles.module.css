@@ -1,0 +1,90 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.tabGroup {
+  display: flex;
+  background-color: #e2e8f0;
+  border-radius: 8px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.tab {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 8px 0;
+  border-radius: 6px;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.tab:hover {
+  color: #1e293b;
+}
+
+.activeTab {
+  flex: 1;
+  border: none;
+  background: #ffffff;
+  padding: 8px 0;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #6366f1;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  cursor: default;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.input {
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-color: #6366f1;
+}
+
+.resultBox {
+  margin-top: 10px;
+  background-color: #1e293b;
+  color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.resultLabel {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.resultValue {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #10b981;
+}

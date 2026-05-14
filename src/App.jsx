@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 import Header from './components/Header'
+import LabManager from './components/lab/LabManager'
 import Home from './pages/Home/Home' 
 import CoursePage from './components/Course/Course Page'
 import { GamificationProvider } from './components/context/GamificationContext'
@@ -35,11 +36,13 @@ function App() {
     <GamificationProvider>
       <BrowserRouter>
         <Header />
+        <LabManager />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/curso/:id" element={<CoursePage />} />
           <Route path="/curso/:courseId/:lessonId" element={<CoursePage />} />
           <Route path="/exercicios" element={<ExercisesPage />} />
+          <Route path="/exercicios/:challengeId" element={<ExercisesPage />} />
           <Route path="/impressoes" element={<PrintPage />} />
         </Routes>
       </BrowserRouter>

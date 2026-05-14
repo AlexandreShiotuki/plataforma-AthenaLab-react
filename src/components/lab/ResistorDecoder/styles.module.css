@@ -1,0 +1,78 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.resistorBody {
+  background-color: #f3e8d2;
+  height: 60px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  box-shadow: inset 0 -5px 10px rgba(0,0,0,0.1), inset 0 5px 10px rgba(255,255,255,0.5);
+  margin: 10px 20px;
+}
+.resistorBody::before,
+.resistorBody::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 6px;
+  background-color: #94a3b8;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: -1;
+}
+.resistorBody::before {
+  left: -20px;
+}
+.resistorBody::after {
+  right: -20px;
+}
+.band {
+  width: 12px;
+  height: 100%;
+}
+.resultBox {
+  background-color: #1e293b;
+  color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+.resultValue {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #10b981;
+  display: block;
+}
+.resultTolerance {
+  font-size: 0.9rem;
+  color: #cbd5e1;
+}
+.selectors {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.selectGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #334155;
+  width: 40%;
+}
+.select {
+  width: 55%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  outline: none;
+  font-weight: bold;
+}
