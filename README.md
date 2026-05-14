@@ -34,13 +34,13 @@ A plataforma foi criada para:
 - **Trilhas de Aprendizado:** Página inicial com cursos organizados e seções de aulas.
 - **Preparatório OBR:** Curso dedicado com vídeos explicativos e conteúdo pedagógico focado em competições.
 - **Exercícios Interativos:** Módulos de exercícios práticos ao final das aulas para fixação de conteúdo.
-- **Sistema de Gamificação:** Pontos de experiência (XP) e níveis baseados no progresso do usuário (atualmente utilizando `localStorage`).
+- **Sistema de Gamificação:** Pontos de experiência (XP) e níveis baseados no progresso do usuário.
 - **Laboratório 3D:** Página de impressão 3D com busca, links para download e visualização de modelos reais renderizados diretamente no navegador.
 - **Player Integrado:** Navegação fluida com player de vídeo integrado para aulas do YouTube.
 
 ## 🚀 Próximos Passos (Roadmap)
-- [ ] Integração com banco de dados (Supabase/Firebase) para salvar o progresso dos alunos na nuvem.
-- [ ] Sistema de Autenticação (Login/Cadastro).
+- [ X ] Integração com banco de dados (Supabase) para salvar o progresso dos alunos na nuvem.
+- [ X ] Sistema de Autenticação (Login/Cadastro).
 - [ ] Painel do Professor para acompanhamento de turmas.
 
 ## 🛠️ Tecnologias Utilizadas
